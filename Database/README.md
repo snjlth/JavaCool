@@ -66,3 +66,12 @@
         select g1, g2, grouping_id(g2, g1), sum(g4) from g_1 group by grouping sets(g2, g1);
         select g1, sum(g4) from g_1 group by g1;
         select g2, sum(g4) from g_1 group by g2;
+
+5. insert data in parallel
+
+        alter table pos nologging;
+         alter session enable parallel dml;
+                   insert /*+append parallel*/ into pos  select /*+  parallel*/ * from pos_new;
+                   commit;
+                   alter session disable parallel dml;
+        alter table pos logging;
