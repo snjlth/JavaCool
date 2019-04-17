@@ -75,24 +75,16 @@ DBMS_MVIEW.REFRESH(MV_NAME, method =>'?');
 </table>
 
 
-Refresh Option	Parameter	Description
-COMPLETE	C	Refreshes by recalculating the defining query of the materialized view.
-FAST	F	
-Refreshes by incrementally applying changes to the materialized view.
+## 小结 
 
-For local materialized views, it chooses the refresh method which is estimated by optimizer to be most efficient. The refresh methods considered are log-based FAST and FAST_PCT.
-
-FAST_PCT	P	Refreshes by recomputing the rows in the materialized view affected by changed partitions in the detail tables.
-FORCE	?	
-Attempts a fast refresh. If that is not possible, it does a complete refresh.
-
-For local materialized views, it chooses the refresh method which is estimated by optimizer to be most efficient. The refresh methods considered are log based FAST, FAST_PCT, and COMPLETE.
-
-## 小结 对于 FAST_PCT 刷新方式没有使用过，不了解，只是在
-Oracle文档中看到的。MV还可以选择是 ON COMMIT刷新和ON DEMAND，即主表
-commit之后 MV开始刷新和在需要刷新的时候进行刷新的两种方式。
+对于 FAST_PCT
+刷新方式没有使用过，不了解，只是在Oracle文档中看到的。MV还可以选择是 ON
+COMMIT刷新和ON DEMAND，即主表 commit之后
+MV开始刷新和在需要刷新的时候进行刷新的两种方式。
 
 ## 参考资料
 Overview of Materialized Views
+
 Refresh Types
+
 Table 16-1 ON DEMAND Refresh Methods
